@@ -1,0 +1,40 @@
+<h1 class="text-3xl font-bold mb-8">Template-driven Form</h1>
+
+<!-- <div class="whitespace-pre-wrap mb-4">
+    {{ model | json }}
+</div> -->
+
+<form class="flex flex-col gap-4">
+    <div>
+        <label for="name">
+            Name
+            <input type="text" id="name" name="name"
+                placeholder="Enter Pokémon name" autocomplete="off" required appForbiddenNames appPokemonExists />
+        </label>
+    </div>
+    <div>
+        <label for="weight">
+            Weight (mg)
+            <input type="number" id="weight" name="weight" min="100"
+                max="1000000" required placeholder="Enter Pokémon weight" />
+        </label>
+    </div>
+    <div>
+        <label for="height">
+            Height (cm)
+            <input type="number" id="height" name="height" min="10"
+                max="1000" placeholder="Enter Pokémon height" required />
+        </label>
+    </div>
+    <div>
+        <label for="imageUrl">
+            Image URL
+            <input type="url" id="imageUrl" name="imageUrl" placeholder="Enter Pokémon image URL" pattern="https?://.+\..+" />
+        </label>
+    </div>
+
+    <button
+        class="bg-purple-500 text-white border-none disabled:bg-gray-200 outline-none hover:bg-purple-400 transition-colors place-self-end px-4 py-2 font-bold rounded-md">
+        Submit
+    </button>
+</form>

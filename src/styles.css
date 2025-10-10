@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+@source './';
+
+input {
+  @apply border mt-2 border-gray-300 rounded-md p-2 w-full disabled:bg-gray-200;
+}
+
+label {
+  @apply block text-sm font-medium text-gray-700;
+
+  &:has([required]) {
+    @apply before:content-['*'] before:text-red-500;
+  }
+}
+
+caption {
+  @apply text-sm font-semibold text-red-500 inline-block;
+}
