@@ -27,7 +27,7 @@ export class PokemonTemplateDrivenFormComponent {
   });
 
   onSubmit(form: NgForm) {
-    if (form.invalid) return;
+    if (form.invalid || form.pending) return;
 
     console.log('Form submitted', form.value);
   }
