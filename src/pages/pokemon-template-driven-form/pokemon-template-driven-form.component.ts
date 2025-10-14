@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ForbiddenNamesDirective } from "../../directives/forbidden-names.directive";
 
