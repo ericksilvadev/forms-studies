@@ -10,29 +10,79 @@
     <div>
         <label for="name">
             Name
-            <input type="text" id="name" name="name" [(ngModel)]="model().name"
+            <input #name="ngModel" type="text" id="name" name="name" [(ngModel)]="model().name"
                 placeholder="Enter Pokémon name" autocomplete="off" appForbiddenNames required />
         </label>
+
+        @if (name.invalid && (name.touched || name.dirty)) {
+            @if (name.errors?.['required']) {
+                <caption>
+                    Name is required.
+                </caption>
+            } @else if (name.errors?.['forbiddenName']) {
+                <caption>
+                    The name "{{ name.errors?.['forbiddenName'].value }}" is not allowed.
+                </caption>
+            }
+        }
     </div>
     <div>
         <label for="weight">
             Weight (mg)
-            <input type="number" id="weight" name="weight" min="100" [(ngModel)]="model().weight"
-                max="1000000" required placeholder="Enter Pokémon weight" />
+            <input #weight="ngModel" type="number" id="weight" name="weight" min="100" [(ngModel)]="model().weight" max="1000000" required
+                placeholder="Enter Pokémon weight" />
         </label>
+        @if (weight.invalid && (weight.touched || weight.dirty)) {
+            @if (weight.errors?.['required']) {
+                <caption>
+                    Weight is required.
+                </caption>
+            } @else if (weight.errors?.['min']) {
+                <caption>
+                    Weight must be at least 100 mg.
+                </caption>
+            } @else if (weight.errors?.['max']) {
+                <caption>
+                    Weight cannot exceed 1,000,000 mg.
+                </caption>
+            }
+        }
     </div>
     <div>
         <label for="height">
             Height (cm)
-            <input type="number" id="height" name="height" min="10" [(ngModel)]="model().height"
-                max="1000" placeholder="Enter Pokémon height" required />
+            <input #height="ngModel" type="number" id="height" name="height" min="10" [(ngModel)]="model().height" max="1000"
+                placeholder="Enter Pokémon height" required />
         </label>
+        @if (height.invalid && (height.touched || height.dirty)) {
+            @if (height.errors?.['required']) {
+                <caption>
+                    Height is required.
+                </caption>
+            } @else if (height.errors?.['min']) {
+                <caption>
+                    Height must be at least 10 cm.
+                </caption>
+            } @else if (height.errors?.['max']) {
+                <caption>
+                    Height cannot exceed 1,000 cm.
+                </caption>
+            }
+        }
     </div>
     <div>
         <label for="imageUrl">
             Image URL
-            <input type="url" id="imageUrl" name="imageUrl" placeholder="Enter Pokémon image URL" pattern="https?://.+\..+" [(ngModel)]="model().imageUrl" />
+            <input #imageUrl="ngModel" type="url" id="imageUrl" name="imageUrl" placeholder="Enter Pokémon image URL"
+                pattern="https?://.+\..+" [(ngModel)]="model().imageUrl" />
         </label>
+        @if (imageUrl.invalid && (imageUrl.touched || imageUrl.dirty)) {
+            @if (imageUrl.errors?.['pattern']) {
+                <caption>
+                    Please enter a valid URL (must start with http:// or https://).
+                </caption>
+            }
+        }
     </div>
 
     <button
