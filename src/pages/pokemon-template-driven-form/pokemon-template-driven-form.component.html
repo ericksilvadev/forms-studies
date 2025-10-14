@@ -11,7 +11,7 @@
         <label for="name">
             Name
             <input #name="ngModel" type="text" id="name" name="name" [(ngModel)]="model().name"
-                placeholder="Enter Pokémon name" autocomplete="off" appForbiddenNames required />
+                placeholder="Enter Pokémon name" autocomplete="off" appPokemonExists appForbiddenNames required />
         </label>
 
         @if (name.invalid && (name.touched || name.dirty)) {
@@ -22,6 +22,10 @@
             } @else if (name.errors?.['forbiddenName']) {
                 <caption>
                     The name "{{ name.errors?.['forbiddenName'].value }}" is not allowed.
+                </caption>
+            } @else if (name.errors?.['pokemonExists']) {
+                <caption>
+                    A Pokémon with the name "{{ name.errors?.['pokemonExists'].value }}" already exists.
                 </caption>
             }
         }

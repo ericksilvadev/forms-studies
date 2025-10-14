@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ForbiddenNamesDirective } from "../../directives/forbidden-names.directive";
+import { PokemonExistsDirective } from "../../directives/pokemon-exists.directive";
 
 interface PokemonForm {
   name: string;
@@ -12,7 +13,7 @@ interface PokemonForm {
 
 @Component({
   selector: 'app-pokemon-template-driven-form',
-  imports: [FormsModule, JsonPipe, ForbiddenNamesDirective],
+  imports: [FormsModule, JsonPipe, ForbiddenNamesDirective, PokemonExistsDirective],
   templateUrl: './pokemon-template-driven-form.component.html',
   styleUrls: ['./pokemon-template-driven-form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
