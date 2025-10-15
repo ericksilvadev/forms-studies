@@ -1,6 +1,8 @@
 <div
   class="w-11 h-6 p-0.5 relative cursor-pointer rounded-full transition-colors bg-gray-300"
   [class.bg-green-500]="value"
+  [class.!bg-gray-300]="disabled()"
+  [class.!cursor-not-allowed]="disabled()"
   (click)="toggleValue()"
 >
   <div

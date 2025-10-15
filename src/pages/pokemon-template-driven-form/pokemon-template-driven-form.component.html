@@ -75,6 +75,12 @@
         }
     </div>
     <div>
+        <label for="legendary">
+            Legendary
+            <app-legendary-switch id="legendary" name="legendary" [(ngModel)]="model().legendary" [disabled]="false"></app-legendary-switch>
+        </label>
+    </div>
+    <div>
         <label for="imageUrl">
             Image URL
             <input #imageUrl="ngModel" type="url" id="imageUrl" name="imageUrl" placeholder="Enter Pokémon image URL"
